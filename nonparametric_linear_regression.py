@@ -277,9 +277,9 @@ def log_posterior_w_gamma_pdf(z : float, cluster_graph : dict[int, int], z_prev:
 
     for l in range(i + 1, n):
         if cluster_graph[l] < l:
-            log_density += w_params.log_p(l + 1, cluster_graph[l] + 1)
+            log_density += w_params.log_p(l, cluster_graph[l] + 1)
         else:
-            log_density += w_params.log_r(l + 1)
+            log_density += w_params.log_r(l)
 
     w_params.update_r(np.exp(z_prev))
 
